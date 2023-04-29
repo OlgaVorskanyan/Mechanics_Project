@@ -71,6 +71,13 @@ public abstract class Converter {
             double newMass = mass + spring.mass;
             return new Spring(newStiffness, newMass);
         }
+         public Spring inSeries(Spring other) {
+            double mass = this.mass + other.mass;
+            double stiffness = 1 / (1/this.stiffness + 1/other.stiffness);
+            return new Spring(mass, stiffness);
+        }
+        
+        
     }
 }
 
